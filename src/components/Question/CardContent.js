@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {Redirect} from 'react-router-dom'
 import { PropTypes } from 'prop-types';
 
+import { colors } from '../../utils/helpers'
+ 
 import {
     Header, Button, Segment
 } from 'semantic-ui-react'
@@ -12,7 +14,7 @@ class CardContent extends Component {
     static propTypes = {
         question: PropTypes.object.isRequired,
         unanswered: PropTypes.bool.isRequired,
-        color: PropTypes.string,
+        // color: PropTypes.string,
     }
 
     state= {
@@ -27,7 +29,11 @@ class CardContent extends Component {
 
     render() {
 
-        const {question, unanswered, color} = this.props
+        const {question, unanswered} = this.props
+        const btnColor = unanswered === true ? colors.green : colors.blue
+        const btnContent = unanswered === true ? 'Answer Poll' : 'View Results'
+        
+        console.log(this.props)
 
         if(this.state.pollView === true) {
             return <Redirect push to={`/question/:${question.id}`} />
@@ -38,18 +44,18 @@ class CardContent extends Component {
                 <Header as='h5' textAlign='left'>
                     Would you rather
                 </Header>
-                <p>
+                <p style={{textAlign: 'center'}}>
                     {question.optionOne.text}
                     <br />
                     or...
                 </p>
 
                 <Button 
-                    color={color}
+                    color={btnColor.name}
                     size='tiny'
                     fluid
                     onClick={this.clickHandle}
-                    content={unanswered === true ? 'Answer Poll' : 'View Results'}
+                    content={btnContent}
                 />
                 
             </Segment>

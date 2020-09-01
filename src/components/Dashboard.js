@@ -5,18 +5,9 @@ import { PropTypes } from 'prop-types';
 import { Tab, Container } from 'semantic-ui-react'
 
 import QuestionCard from './QuestionCard'
-import CardContent from './CardContent';
+// import CardContent from './CardContent';
 
-const color = {
-    green: {
-        name: 'green',
-        hex: '#21ba45'
-    },
-    blue: {
-        name: 'blue',
-        hex:  '#2185d0'
-    }
-}
+
 
 
 class Dashboard extends Component {
@@ -62,14 +53,15 @@ const panes = props => {
                     {userQuestions.answered.map(q => (
                         <QuestionCard 
                             key={q.id}
-                            userId={q.author}
-                            color={color.green.hex}
+                            q_id={q.id}
+                            unanswered = {true}
+                            // color={color.green.hex}
                         >
-                            <CardContent 
+                            {/* <CardContent 
                                 question={q}
                                 unanswered={true}
                                 color = {color.green.name}
-                            />
+                            /> */}
                         </QuestionCard>
                     ))}
                 </Tab.Pane>
@@ -83,17 +75,16 @@ const panes = props => {
                     {userQuestions.unanswered.map(q => (
                         <QuestionCard 
                             key={q.id}
-                            userId={q.author}
-                            color={color.blue.hex}
-                            question = {q}
-                            unanswered = {true}
+                            q_id={q.id}
+                            // color={color.blue.hex}
+                            unanswered = {false}
 
                         >
-                            <CardContent 
+                            {/* <CardContent 
                                 question={q}
                                 unanswered={false}
                                 color = {color.blue.name}
-                            />
+                            /> */}
                             
 
                         </QuestionCard>
