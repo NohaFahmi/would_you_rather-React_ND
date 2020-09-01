@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types';
 
 import {
-    Segment, Header, Grid, Image
+    Segment, Header, Grid, Image,
 } from 'semantic-ui-react'
 
 class QuestionCard extends Component {
@@ -15,7 +15,7 @@ class QuestionCard extends Component {
 
     render() {
 
-        const {user, child, color} = this.props
+        const {user, children, color} = this.props
         console.log((this.props))
         return (
             <Segment>
@@ -34,7 +34,7 @@ class QuestionCard extends Component {
                             <Image src={user.avatarURL}/>
                         </Grid.Column>
                         <Grid.Column width={11}>
-                            {child}
+                            {children}
                         </Grid.Column>
                     </Grid.Row>
 

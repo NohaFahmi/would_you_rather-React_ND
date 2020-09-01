@@ -5,6 +5,7 @@ import { PropTypes } from 'prop-types';
 import { Tab, Container } from 'semantic-ui-react'
 
 import QuestionCard from './QuestionCard'
+import CardContent from './CardContent';
 
 const color = {
     green: {
@@ -32,7 +33,7 @@ class Dashboard extends Component {
         console.log(this.props)
         return (
             
-            <Container padded>
+            <Container>
                 
                 <Tab panes={panes({userQuestions})} className='tab' />
                 
@@ -64,13 +65,11 @@ const panes = props => {
                             userId={q.author}
                             color={color.green.hex}
                         >
-                            <div 
+                            <CardContent 
                                 question={q}
                                 unanswered={true}
-                                color={color.green.name}
-                            >
-
-                            </div>
+                                color = {color.green.name}
+                            />
                         </QuestionCard>
                     ))}
                 </Tab.Pane>
@@ -86,14 +85,17 @@ const panes = props => {
                             key={q.id}
                             userId={q.author}
                             color={color.blue.hex}
+                            question = {q}
+                            unanswered = {true}
+
                         >
-                            <div 
+                            <CardContent 
                                 question={q}
                                 unanswered={false}
-                                color={color.blue.name}
-                            >
+                                color = {color.blue.name}
+                            />
+                            
 
-                            </div>
                         </QuestionCard>
                     ))}
                 </Tab.Pane>
