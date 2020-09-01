@@ -1,34 +1,123 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Question from './Question'
+import { PropTypes } from 'prop-types';
+
+import { Tab, Container } from 'semantic-ui-react'
+
+import QuestionCard from './QuestionCard'
+
+const color = {
+    green: {
+        name: 'green',
+        hex: '#21ba45'
+    },
+    blue: {
+        name: 'blue',
+        hex:  '#2185d0'
+    }
+}
+
 
 class Dashboard extends Component {
 
+    static propTypes = {
+        userQuestions: PropTypes.object.isRequired
+    }
+
     render() {
+        
+
+        const { userQuestions} = this.props
+
         console.log(this.props)
         return (
-            <div>
-                <h3 className="center">
-                    Dashboard
-                </h3>
-                <ul className='qIdsList'>
+            
+            <Container padded>
+                
+                <Tab panes={panes({userQuestions})} className='tab' />
+                
+                {/* <ul className='qIdsList'>
                     {this.props.questionsIds.map((id) => (
                         <li key={id}>
-                            <Question id={id} />
+                            <QuestionCard id={id} />
                         </li>
                         
                     ))}
                         
-                </ul>
-            </div>
+                </ul> */}
+            </Container>
         )
     }
 }
 
-function mapStateToProps({questions}) {
+const panes = props => {
+    const {userQuestions} = props
+
+    return [
+        {
+            menuItem: 'Unanswered Questions',
+            render: () => (
+                <Tab.Pane>
+                    {userQuestions.answered.map(q => (
+                        <QuestionCard 
+                            key={q.id}
+                            userId={q.author}
+                            color={color.green.hex}
+                        >
+                            <div 
+                                question={q}
+                                unanswered={true}
+                                color={color.green.name}
+                            >
+
+                            </div>
+                        </QuestionCard>
+                    ))}
+                </Tab.Pane>
+            )
+        },
+
+        {
+            menuItem: 'Answered Questions',
+            render: () => (
+                <Tab.Pane>
+                    {userQuestions.unanswered.map(q => (
+                        <QuestionCard 
+                            key={q.id}
+                            userId={q.author}
+                            color={color.blue.hex}
+                        >
+                            <div 
+                                question={q}
+                                unanswered={false}
+                                color={color.blue.name}
+                            >
+
+                            </div>
+                        </QuestionCard>
+                    ))}
+                </Tab.Pane>
+            )
+        }
+    ]
+}
+function mapStateToProps({authedUser, users, questions}) {
+    const answeredIds = Object.keys(users[authedUser].answers)
+    const answered = Object.values(questions)
+        .filter(q => answeredIds.includes(q.id))
+        .sort((x, y) => y.timestamp - x.timestamp)
+    
+    const unanswered = Object.values(questions)
+        .filter(q => !answeredIds.includes(q.id))
+        .sort((x, y) => y.timestamp - x.timestamp)
     return {
-        questionsIds: Object.keys(questions)
-        .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+
+        userQuestions: {
+            answered, 
+            unanswered
+        }
+        // questionsIds: Object.keys(questions)
+        // .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
     }
 }
 
