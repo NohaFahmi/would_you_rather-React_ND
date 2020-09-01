@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Question from './Question'
 
 class Dashboard extends Component {
 
@@ -13,7 +14,7 @@ class Dashboard extends Component {
                 <ul className='qIdsList'>
                     {this.props.questionsIds.map((id) => (
                         <li key={id}>
-                            <div>QUESTION ID: {id}</div>
+                            <Question id={id} />
                         </li>
                         
                     ))}
