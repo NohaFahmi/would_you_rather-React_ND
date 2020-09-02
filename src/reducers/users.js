@@ -1,5 +1,5 @@
 import { 
-    RECEIVE_USERS, ADD_ANSWER_TO_USER
+    RECEIVE_USERS, ADD_ANSWER_TO_USER, ADD_NEW_QUESTION
 } from '../actions/users'
 
 
@@ -23,6 +23,18 @@ export default function users(state = {}, action) {
                     }
                 }
             }
+
+        case ADD_NEW_QUESTION :
+            
+            const {id, author} = action
+            return  {
+                ...state,
+                [author]: {
+                    ...state[author],
+                    questions: state[author.questions.concat(id)]
+                }
+            }
+
         default : 
             return state
     }
