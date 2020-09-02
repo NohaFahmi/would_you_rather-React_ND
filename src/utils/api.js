@@ -15,9 +15,9 @@ export function getInitialData() {
     }))
 }
 
-export function saveQuestionAnswer(info) {
-    console.log('info', info)
-    return _saveQuestionAnswer(info)
+export function saveQuestionAnswer(authedUser, qid, answer) {
+    console.log(answer)
+    return _saveQuestionAnswer(authedUser, qid, answer)
 }
 
 export function saveQuestion (info) {

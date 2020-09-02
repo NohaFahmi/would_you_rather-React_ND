@@ -1,5 +1,5 @@
 import { 
-    RECEIVE_USERS, ADD_ANSWER_FOR_USER
+    RECEIVE_USERS, ADD_ANSWER_TO_USER
 } from '../actions/users'
 
 
@@ -11,7 +11,7 @@ export default function users(state = {}, action) {
                 ...action.users
             }
         
-        case ADD_ANSWER_FOR_USER :
+        case ADD_ANSWER_TO_USER :
             const {authedUser, qid, answer} = action
             return {
                 ...state,
