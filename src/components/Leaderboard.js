@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
-    Segment, Label, Grid, Header, Image, Divider
+    Segment, Label, Grid, Header, Image, Divider, Container
 } from 'semantic-ui-react'
 
 
-const colortrophy = ['yellow', 'orange', 'grey']
+const colortrophy = ['teal', 'orange', 'grey']
 
 export class Leaderboard extends Component {
 
@@ -19,20 +19,26 @@ export class Leaderboard extends Component {
 
         return (
 
-            <div>
+            <Container style={{marginTop: '50px'}} textAlign='center'>
                 {boardData.map((user, i) => (
-                    <Segment>
+                    <Segment key={i}>
 
                         <Label 
                             icon='trophy' 
                             color={colortrophy[i]} 
                             corner='left'
+                            
                         />
 
                         <Grid divided padded>
                             <Grid.Row>
                                 <Grid.Column width={4} verticalAlign='middle'>
-                                    <Image src={user.avatarURL} />
+                                    <Image 
+                                        src={user.avatarURL} 
+                                        size='small'
+                                        circular
+
+                                    />
 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
@@ -55,10 +61,10 @@ export class Leaderboard extends Component {
 
                                 <Grid.Column width={4} textAlign='center'>
 
-                                    <Segment.Group>
+                                    <Segment.Group >
                                         <Header as='h5' block attached='top'>Score</Header>
                                         <Segment>
-                                            <Label circular color='green' size='big'>
+                                            <Label circular color={colortrophy[i]} size='big'>
                                                 {user.questionTotal + user.answerTotal}
                                             </Label>
                                         </Segment>
@@ -70,7 +76,7 @@ export class Leaderboard extends Component {
                     </Segment>
                 ))}
                 
-            </div>
+            </Container>
         )
     }
 }

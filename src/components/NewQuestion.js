@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 
 import {
 
-    Segment, Header, Grid, Dimmer, Loader, Form, Divider
+    Segment, Header, Grid, Dimmer, Loader, Form, Divider, Container
 } from 'semantic-ui-react'
 
 
@@ -57,51 +57,53 @@ export class NewQuestion extends Component {
 
         return (
 
-            <Segment>
-                <Header as='h4' textAlign='left' block attached='top'>
-                    Create a new Poll
-                </Header>
+            <Container style={{marginTop: '50px'}}>
+                <Segment color='teal'>
+                    <Header as='h3' textAlign='left' block attached='top' color='teal'>
+                        Create a new Poll
+                    </Header>
 
-                <Grid padded>
-                    <Grid.Column>
-                        {this.state.isLoading && (
-                            <Dimmer active inverted>
-                                <Loader content='updating' />
-                            </Dimmer>
-                        )}
+                    <Grid padded>
+                        <Grid.Column>
+                            {this.state.isLoading && (
+                                <Dimmer active inverted>
+                                    <Loader content='updating' />
+                                </Dimmer>
+                            )}
 
-                        <p>Complete the Question: </p>
+                            <h4>Complete the Question: </h4>
 
-                        <p>
-                            <strong>Would you rather...</strong>
-                        </p>
+                            <p>
+                                <strong>Would you rather...</strong>
+                            </p>
 
-                        <Form onSubmit={this.submitHandle}>
-                            <Form.Input 
-                                id='option1'
-                                placeholder='Enter option one...'
-                                value={this.state.option1}
-                                onChange={this.changeHandle}
-                                required
-                            />
+                            <Form onSubmit={this.submitHandle}>
+                                <Form.Input 
+                                    id='option1'
+                                    placeholder='Enter option one...'
+                                    value={this.state.option1}
+                                    onChange={this.changeHandle}
+                                    required
+                                />
 
-                            <Divider>Or</Divider>
+                                <Divider horizontal>Or</Divider>
 
-                            <Form.Input 
-                                id='option2'
-                                placeholder='Enter option two...'
-                                value={this.state.option2}
-                                onChange={this.changeHandle}
-                                required
-                            />
+                                <Form.Input 
+                                    id='option2'
+                                    placeholder='Enter option two...'
+                                    value={this.state.option2}
+                                    onChange={this.changeHandle}
+                                    required
+                                />
 
-                            <Form.Button positive size='tiny' disabled={disable}>
-                                Submit
-                            </Form.Button>
-                        </Form>
-                    </Grid.Column>
-                </Grid>
-             </Segment>
+                                <Form.Button positive size='small' style={{backgroundColor: '#007f7f'}} disabled={disable}>
+                                    Submit
+                                </Form.Button>
+                            </Form>
+                        </Grid.Column>
+                    </Grid>
+                </Segment>
+             </Container>
 
         )
     }

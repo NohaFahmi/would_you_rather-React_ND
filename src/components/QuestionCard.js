@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 
 import {
-    Segment, Header, Grid, Image,
+    Segment, Header, Grid, Image, Container,
 } from 'semantic-ui-react'
 
 import CardContent from './question/CardContent'
@@ -54,7 +54,7 @@ class QuestionCard extends Component {
         const {author, type, question, badPath, unanswered= null} = this.props
         console.log((this.props))
 
-        const tabColor = unanswered === true ? colors.green : colors.blue
+        const tabColor = unanswered === true ? colors.teal : colors.orange
 
         const borderTop = 
             unanswered === null
@@ -66,9 +66,10 @@ class QuestionCard extends Component {
         }
 
         return (
-            <Segment>
+            <Container style={{marginTop: '40px'}}>
+                <Segment>
                 <Header 
-                    as='h5'
+                    as='h4'
                     textAlign='left'
                     block
                     attached='top'
@@ -80,7 +81,12 @@ class QuestionCard extends Component {
                 <Grid divided padded>
                     <Grid.Row>
                         <Grid.Column width={5}>
-                            <Image src={author.avatarURL}/>
+                            <Image 
+                                src={author.avatarURL}
+                                size='small'
+                                circular
+                                
+                            />
                         </Grid.Column>
                         <Grid.Column width={11}>
                             <Content 
@@ -94,6 +100,9 @@ class QuestionCard extends Component {
                 </Grid>
                
             </Segment>
+
+            </Container>
+            
         )
     }
 }

@@ -24,7 +24,7 @@ class Dashboard extends Component {
         console.log(this.props)
         return (
             
-            <Container>
+            <Container style={{padding: '30px'}}>
                 
                 <Tab panes={panes({userQuestions})} className='tab' />
                 
@@ -49,7 +49,7 @@ const panes = props => {
         {
             menuItem: 'Answered Questions',
             render: () => (
-                <Tab.Pane>
+                <Tab.Pane  style={{backgroundColor: '#007f7f'}}>
                     {userQuestions.answered.map(q => (
                         <QuestionCard 
                             key={q.id}
@@ -71,7 +71,7 @@ const panes = props => {
         {
             menuItem: 'unanswered Questions',
             render: () => (
-                <Tab.Pane>
+                <Tab.Pane style={{backgroundColor: '#b54800'}}>
                     {userQuestions.unanswered.map(q => (
                         <QuestionCard 
                             key={q.id}

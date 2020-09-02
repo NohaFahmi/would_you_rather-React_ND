@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { 
-    Header, Form, Radio, Button 
+    Header, Form, Radio, Button, Segment
 } from 'semantic-ui-react';
 
 
@@ -38,7 +38,7 @@ export class Question extends Component {
         const disable = this.state.value === '' ? true : false
 
         return (
-            <div>
+            <Segment>
                 <Header as='h4'>
                     Would you rather
                 </Header>
@@ -63,19 +63,19 @@ export class Question extends Component {
                             onChange={this.changeHandle}
                         />
                     </Form.Field>
-                    <Form.Field>
+                    <Form.Field >
 
                         <Button 
-                            color='orange'
-                            size='tiny'
+                            size='small'
                             fluid
                             positive
                             disabled={disable}
                             content='Submit'
+                            style={{backgroundColor: '#b54800'}}
                         />
                     </Form.Field>
                 </Form>
-            </div>
+            </Segment>
         )
     }
 }

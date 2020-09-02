@@ -51,7 +51,7 @@ export class Results extends Component {
         }
         return (
             <div>
-                <Header as='h3'>
+                <Header as='h2' color='teal'>
                     Results: 
                     <Header.Subheader>
                         would you rather

@@ -1,12 +1,12 @@
 export const colors = 
 {
-    green: {
-        name: 'green',
-        hex: '#21ba45'
+    teal: {
+        name: 'teal',
+        hex: '#007f7f'
     },
-    blue: {
-        name: 'blue',
-        hex: '#2185d0'
+    orange: {
+        name: 'orange',
+        hex: '#b54800'
     },
     grey: {
         name: null,
@@ -16,7 +16,7 @@ export const colors =
 
 export const styles = {
     primary: {
-      color: 'green',
+      color: 'orange',
       bgColor: 'honeydew'
     },
     secondary: {

@@ -21,8 +21,8 @@ class Login extends Component {
     render() {
         
         return (
-            <Container>
-                <Segment>
+            <Segment  padded='very'>
+                <Segment color='teal'>
                     <LoginHeader />
                     <LoginLayoutContianer 
                         image={<LogoImg />}
@@ -30,17 +30,17 @@ class Login extends Component {
                         loading={this.state.loading}
                     />
                 </Segment>
-                <footer>
+                <footer style={{textAlign: 'center', padding: '10px'}}>
                     <a href='/'> this App created for Udacity, Made by NOHA MOHAMMED</a>
                 </footer>
-            </Container>
+            </Segment>
         )
     }
 }
 //building LoginHeader Component
 const LoginHeader = () => (
-    <Header as='h2' block attached='top' textAlign='center'>
-        <Header.Content>Welcome To WOULD YOU RATHER App!</Header.Content>
+    <Header as='h1' block attached='top' textAlign='center'>
+        <Header.Content >Welcome To <span style={{ color:'teal'}}>WOULD YOU RATHER</span> App!</Header.Content>
         <Header.Subheader>Please, Sign In to continue</Header.Subheader>
     </Header>
 )
@@ -69,7 +69,7 @@ const LoginLayoutContianer = ({image, form, loading}) => (
 //build LogoImage
 const LogoImg = () => (
     <Image 
-        src="https://avatars.dicebear.com/api/jdenticon/logoImg.svg" 
+        src="https://avatars.dicebear.com/api/jdenticon/logo.svg" 
         size="small" 
         centered 
         
@@ -118,9 +118,9 @@ class LoginForm extends Component {
         const disable = value === '' ? true : false
 
         return (
-            <Form onSubmit={this.handleLogin}>
-                <Header as='h4' color='green'>
-                    Sign In
+            <Form onSubmit={this.handleLogin} >
+                <Header as='h2'>
+                    <span style={{color: '#007f7f'}}>Sign In</span>
                 </Header>
                 <Form.Dropdown 
                     placeholder='Select A Friend' 
@@ -128,9 +128,17 @@ class LoginForm extends Component {
                     onChange={this.onChange}
                     options={this.generateOptions()}
                     required 
+                    selection
+                    
+                />
+                <Form.Button 
+                    content='Login' 
+                    positive 
+                    fluid 
+                    disabled={disable} 
+                    style={{backgroundColor: '#007f7f', color: 'white'}}
 
                 />
-                <Form.Button content='Login' positive fluid disabled={disable} />
             </Form>
         )
     }

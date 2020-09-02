@@ -30,8 +30,8 @@ class CardContent extends Component {
     render() {
 
         const {question, unanswered} = this.props
-        const btnColor = unanswered === true ? colors.green : colors.blue
-        const btnContent = unanswered === true ? 'View Results' : 'Answer Poll'
+        const btnColor = unanswered === true ? colors.teal : colors.orange
+        const btnContent = unanswered === true ? 'Show Results' : 'Answer Poll'
         
         console.log(this.props)
 
@@ -41,7 +41,7 @@ class CardContent extends Component {
         return (
             <Segment>
 
-                <Header as='h5' textAlign='left'>
+                <Header as='h4' textAlign='left'>
                     Would you rather
                 </Header>
                 <p style={{textAlign: 'center'}}>
@@ -52,7 +52,7 @@ class CardContent extends Component {
 
                 <Button 
                     color={btnColor.name}
-                    size='tiny'
+                    size='small'
                     fluid
                     onClick={this.clickHandle}
                     content={btnContent}
