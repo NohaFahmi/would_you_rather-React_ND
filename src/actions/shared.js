@@ -1,6 +1,6 @@
-import { getInitialData } from './../utils/api';
-import { receiveUsers } from '../actions/users'
-import { receiveQuestions } from '../actions/questions'
+import { getInitialData, saveQuestionAnswer } from './../utils/api';
+import { receiveUsers, addAnsToUser } from '../actions/users'
+import { receiveQuestions, addAnswer } from '../actions/questions'
 
 
 export function handleInitialData() {
@@ -10,5 +10,21 @@ export function handleInitialData() {
             dispatch(receiveUsers(users))
             dispatch(receiveQuestions(questions))
         })
+    }
+}
+
+export function handleSavingAnswers(authedUser, qid, answer) {
+    return (dispatch) => {
+        dispatch(addAnsToUser(authedUser, qid, answer))
+        dispatch(addAnswer(authedUser, qid, answer))
+
+        return saveQuestionAnswer({
+            authedUser,
+            qid,
+            answer
+        })
+        // .catch(e => {
+        //     console.warn('Error in handleSavingAnswers:', e)
+        // })
     }
 }

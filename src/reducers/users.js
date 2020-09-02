@@ -1,4 +1,6 @@
-import { RECEIVE_USERS } from '../actions/users';
+import { 
+    RECEIVE_USERS, ADD_ANSWER_FOR_USER
+} from '../actions/users'
 
 
 export default function users(state = {}, action) {
@@ -9,6 +11,18 @@ export default function users(state = {}, action) {
                 ...action.users
             }
         
+        case ADD_ANSWER_FOR_USER :
+            const {authedUser, qid, answer} = action
+            return {
+                ...state,
+                [authedUser]: {
+                    ...state[authedUser],
+                    answers: {
+                        ...state[authedUser].answers,
+                        [qid]: answer
+                    }
+                }
+            }
         default : 
             return state
     }
