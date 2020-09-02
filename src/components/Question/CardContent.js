@@ -36,7 +36,7 @@ class CardContent extends Component {
         console.log(this.props)
 
         if(this.state.pollView === true) {
-            return <Redirect push to={`/question/:${question.id}`} />
+            return <Redirect push to={`/questions/${question.id}`} />
         }
         return (
             <Segment>

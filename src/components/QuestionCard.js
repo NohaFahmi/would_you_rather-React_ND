@@ -6,9 +6,9 @@ import {
     Segment, Header, Grid, Image,
 } from 'semantic-ui-react'
 
-import CardContent from './Question/CardContent'
-import Question from './Question/Question';
-import Results from './Question/Results';
+import CardContent from './question/CardContent'
+import Question from './question/Question';
+import Results from './question/Results';
 
 import {colors} from '../utils/helpers'
 
@@ -105,7 +105,7 @@ function mapStateToProps({users, questions, authedUser},
             const user = users[authedUser]
             type = types.QUESTION
             
-            if(Object.keys(user.answers).includes(q_id)) {
+            if(Object.keys(user.answers).includes(question.id)) {
                 type = types.RESULTS
             }
         }
