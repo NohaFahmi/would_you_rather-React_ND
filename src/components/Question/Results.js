@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -75,22 +74,12 @@ class Results extends Component {
                    </Progress>
                </Segment>
                <Button size='tiny' floated='right' onClick={this.handleClick}>Back</Button>
-=======
-// import { PropTypes } from 'prop-types'
-
-
-class Results extends Component {
-    render() {
-        return (
-            <div>
-                This is a Results main page
->>>>>>> 260473bb28513dc4b550bf1c51d218bdf6faefee
-            </div>
-        )
+               </div>
+            )
+        }
     }
-}
 
-<<<<<<< HEAD
+
 function mapStateToProps({users, authedUser}) {
     const user = users[authedUser]
 
@@ -98,8 +87,5 @@ function mapStateToProps({users, authedUser}) {
         user
     }
 }
-export default withRouter(connect(mapStateToProps)(Results))
-=======
 
-export default Results
->>>>>>> 260473bb28513dc4b550bf1c51d218bdf6faefee
+export default withRouter(connect(mapStateToProps)(Results))
