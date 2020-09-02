@@ -20,8 +20,8 @@ export class NewQuestion extends Component {
     state ={
         valid: false,
         isLoading: false,
-        option_1: '',
-        option_2: ''
+        option1: '',
+        option2: ''
     }
 
     changeHandle = e => {
@@ -31,16 +31,16 @@ export class NewQuestion extends Component {
     submitHandle = e => {
         e.preventDefault()
         const {authedUser, handleSavingQuestions} = this.props
-        const {option_1, option_2} = this.state
+        const {option1, option2} = this.state
 
         new Promise((res, rej) => {
             this.setState({isLoading: true})
-            handleSavingQuestions(option_1, option_2, authedUser)
+            handleSavingQuestions(option1, option2, authedUser)
             setTimeout(() => res('success'), 1000)
         }).then(() => {
             this.setState({
-                option_1: '',
-                option_2: ''
+                option1: '',
+                option2: '',
             })
 
             this.setState({valid: true})
@@ -49,7 +49,7 @@ export class NewQuestion extends Component {
 
     render() {
         console.log('this.props', this.props)
-        const disable = this.state.option_1 === '' || this.state.option_2 === ''
+        const disable = this.state.option1 === '' || this.state.option2 === ''
 
         if(this.state.valid === true) {
             return <Redirect to='/' />
@@ -80,17 +80,17 @@ export class NewQuestion extends Component {
                             <Form.Input 
                                 id='option1'
                                 placeholder='Enter option one...'
-                                value={this.state.option_1}
+                                value={this.state.option1}
                                 onChange={this.changeHandle}
                                 required
                             />
 
-                            <Divider herizontal>Or</Divider>
+                            <Divider>Or</Divider>
 
                             <Form.Input 
                                 id='option2'
                                 placeholder='Enter option two...'
-                                value={this.state.option_2}
+                                value={this.state.option2}
                                 onChange={this.changeHandle}
                                 required
                             />

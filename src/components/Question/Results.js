@@ -9,7 +9,7 @@ import {
 
 import { styles } from '../../utils/helpers'
 
-const votesLabel = () => (
+const VotesLabel = () => (
     <Label color="orange" ribbon='right' className='vote'>
         <Icon name='check circle outline' size='big' className='compact'/>
         <div style={{float: 'right'}}>
@@ -58,7 +58,7 @@ export class Results extends Component {
                     </Header.Subheader>
                 </Header>
                 <Segment color={option_1.color}>
-                    {userVotes === 'optionOne' && <votesLabel />}
+                    {userVotes === 'optionOne' && <VotesLabel />}
 
                     <p>{question.optionOne.text}</p>
 
@@ -73,7 +73,7 @@ export class Results extends Component {
                 </Segment>
 
                 <Segment color={option_2.color}>
-                    {userVotes === 'optionTwo' && <votesLabel />}
+                    {userVotes === 'optionTwo' && <VotesLabel />}
 
                     <p>{question.optionTwo.text}</p>
 

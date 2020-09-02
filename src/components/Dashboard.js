@@ -47,7 +47,7 @@ const panes = props => {
 
     return [
         {
-            menuItem: 'Unanswered Questions',
+            menuItem: 'Answered Questions',
             render: () => (
                 <Tab.Pane>
                     {userQuestions.answered.map(q => (
@@ -69,7 +69,7 @@ const panes = props => {
         },
 
         {
-            menuItem: 'Answered Questions',
+            menuItem: 'unanswered Questions',
             render: () => (
                 <Tab.Pane>
                     {userQuestions.unanswered.map(q => (

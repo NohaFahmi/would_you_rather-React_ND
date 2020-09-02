@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types';
+import { Redirect } from 'react-router-dom';
+
 
 import {
     Segment, Header, Grid, Image,
@@ -49,7 +51,7 @@ class QuestionCard extends Component {
 
     render() {
 
-        const {author, type, question, unanswered= null} = this.props
+        const {author, type, question, badPath, unanswered= null} = this.props
         console.log((this.props))
 
         const tabColor = unanswered === true ? colors.green : colors.blue
@@ -58,6 +60,11 @@ class QuestionCard extends Component {
             unanswered === null
             ? `1px solid ${colors.grey}`
             : `2px solid ${tabColor.hex}`
+
+        if(badPath === true) {
+            return <Redirect to='/questions/bad_id' />
+        }
+
         return (
             <Segment>
                 <Header 
@@ -94,27 +101,38 @@ class QuestionCard extends Component {
 function mapStateToProps({users, questions, authedUser}, 
     {match, q_id}
     ) {
-        let question, type;
+        let question, author, type, badPath = false;
+        // console.log(match.params)
         if(q_id !== undefined) {
             question = questions[q_id]
+            author = users[question.author]
             type = types.CARD_CONTENT
+
         } else {
 
             const {q_id} = match.params
             question = questions[q_id]
             const user = users[authedUser]
-            type = types.QUESTION
-            
-            if(Object.keys(user.answers).includes(question.id)) {
-                type = types.RESULTS
+
+            if(question === undefined) {
+                badPath = true
+            } else {
+                author = users[question.author]
+                type = types.QUESTION
+                
+                if(Object.keys(user.answers).includes(question.id)) {
+                    type = types.RESULTS
+                }
             }
+            
         }
-        const author = users[question.author]
+        // const author = users[question.author]
         
         return {
             question,
             author,
-            type
+            type,
+            badPath
         }
 }
 export default connect(mapStateToProps)(QuestionCard)

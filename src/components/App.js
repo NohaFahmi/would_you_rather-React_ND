@@ -36,7 +36,7 @@ class App extends Component {
               <Switch>
                 <Route exact path='/' component={Dashboard} />
                 <Route path='/questions/bad_id' component={NotFound} />
-                <Route path='/questions/:question_id' component={QuestionCard} />
+                <Route path='/questions/:q_id' component={QuestionCard} />
                 <Route path='/add' component={NewQuestion} />
                 <Route path='/leaderboard' component={Leaderboard} />
                 <Route component={NotFound} />

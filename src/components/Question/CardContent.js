@@ -31,7 +31,7 @@ class CardContent extends Component {
 
         const {question, unanswered} = this.props
         const btnColor = unanswered === true ? colors.green : colors.blue
-        const btnContent = unanswered === true ? 'Answer Poll' : 'View Results'
+        const btnContent = unanswered === true ? 'View Results' : 'Answer Poll'
         
         console.log(this.props)
 
