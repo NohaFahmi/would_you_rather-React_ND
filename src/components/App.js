@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import Login from './Login';
 import Navigation from './Navigation';
+import QuestionCard from './QuestionCard';
+import NewQuestion  from './NewQuestion';
+import Leaderboard  from './Leaderboard';
+import NotFound from './NotFound'
 
 
 class App extends Component {
@@ -29,8 +33,16 @@ class App extends Component {
           ) : (
             <div>
               <Navigation />
-              <Route exact path='/' component={Dashboard} />
-              
+              <Switch>
+                <Route exact path='/' component={Dashboard} />
+                <Route path='/questions/bad_id' component={NotFound} />
+                <Route path='/questions/:question_id' component={QuestionCard} />
+                <Route path='/add' component={NewQuestion} />
+                <Route path='/leaderboard' component={Leaderboard} />
+                <Route component={NotFound} />
+                
+
+              </Switch>
             </div>
             
             )

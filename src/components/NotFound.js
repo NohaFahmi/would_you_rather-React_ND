@@ -1,7 +1,7 @@
 import React, {Component}from 'react'
 import { Segment, Icon, Header } from 'semantic-ui-react';
 
-export class NotFount extends Component {
+export class  NotFound extends Component {
     render() {
         return (
             <Segment placeholder textAlign='center'>
@@ -17,4 +17,4 @@ export class NotFount extends Component {
     }
 }
 
-export default NotFount
+export default NotFound
