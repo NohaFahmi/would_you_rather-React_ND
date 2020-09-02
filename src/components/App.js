@@ -30,6 +30,7 @@ class App extends Component {
             <div>
               <Navigation />
               <Route exact path='/' component={Dashboard} />
+              
             </div>
             
             )
