@@ -46,52 +46,52 @@ const panes = props => {
     const {userQuestions} = props
 
     return [
-        {
-            menuItem: 'Answered Questions',
-            render: () => (
-                <Tab.Pane  style={{backgroundColor: '#007f7f'}}>
-                    {userQuestions.answered.map(q => (
-                        <QuestionCard 
-                            key={q.id}
-                            q_id={q.id}
-                            unanswered = {true}
-                            // color={color.green.hex}
-                        >
-                            {/* <CardContent 
-                                question={q}
-                                unanswered={true}
-                                color = {color.green.name}
-                            /> */}
-                        </QuestionCard>
-                    ))}
-                </Tab.Pane>
-            )
-        },
+            {
+                menuItem: 'Unanswered Questions',
+                render: () => (
+                    <Tab.Pane style={{backgroundColor: '#b54800'}}>
+                        {userQuestions.unanswered.map(q => (
+                            <QuestionCard 
+                                key={q.id}
+                                q_id={q.id}
+                                // color={color.blue.hex}
+                                unanswered = {false}
 
-        {
-            menuItem: 'unanswered Questions',
-            render: () => (
-                <Tab.Pane style={{backgroundColor: '#b54800'}}>
-                    {userQuestions.unanswered.map(q => (
-                        <QuestionCard 
-                            key={q.id}
-                            q_id={q.id}
-                            // color={color.blue.hex}
-                            unanswered = {false}
+                            >
+                                {/* <CardContent 
+                                    question={q}
+                                    unanswered={false}
+                                    color = {color.blue.name}
+                                /> */}
+                                
 
-                        >
-                            {/* <CardContent 
-                                question={q}
-                                unanswered={false}
-                                color = {color.blue.name}
-                            /> */}
-                            
+                            </QuestionCard>
+                        ))}
+                    </Tab.Pane>
+                )
+            },
 
-                        </QuestionCard>
-                    ))}
-                </Tab.Pane>
-            )
-        }
+            {
+                menuItem: 'Answered Questions',
+                render: () => (
+                    <Tab.Pane  style={{backgroundColor: '#007f7f'}}>
+                        {userQuestions.answered.map(q => (
+                            <QuestionCard 
+                                key={q.id}
+                                q_id={q.id}
+                                unanswered = {true}
+                                // color={color.green.hex}
+                            >
+                                {/* <CardContent 
+                                    question={q}
+                                    unanswered={true}
+                                    color = {color.green.name}
+                                /> */}
+                            </QuestionCard>
+                        ))}
+                    </Tab.Pane>
+                )
+            },
     ]
 }
 function mapStateToProps({authedUser, users, questions}) {
