@@ -15,6 +15,7 @@ Clone the repository, change directories, and use NPM to install the dependencie
 $ git clone https://github.com/james-priest/reactnd-project-would-you-rather.git
 $ cd reactnd-project-would-you-rather
 $ npm install
+$ npm start
 ```
 Go to http://localhost:3000 so you can view the app in broswer
 
