@@ -12,8 +12,6 @@ A template of README best practices to make your README simple to understand and
 ## Installation
 Clone the repository, change directories, and use NPM to install the dependencies.
 ```sh
-$ git clone https://github.com/james-priest/reactnd-project-would-you-rather.git
-$ cd reactnd-project-would-you-rather
 $ npm install
 $ npm start
 ```
