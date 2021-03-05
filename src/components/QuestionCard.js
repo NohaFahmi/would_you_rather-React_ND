@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import Results from './question/Results';
 import { colors } from '../utils/helpers'
-import CardContent from './question/CardContent';
 import { Question } from './question/Question';
+import { Results } from './question/Results';
+import CardContent from './question/CardContent';
 
 import {
     Segment, Header, Grid, Image, Container,
