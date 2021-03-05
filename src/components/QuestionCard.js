@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { colors } from '../utils/helpers'
-import { Question } from './question/Question';
-import { Results } from './question/Results';
+import Question from './question/Question';
+import Results from './question/Results';
 import CardContent from './question/CardContent';
 
 import {
