@@ -17,17 +17,17 @@ class Dashboard extends Component {
     }
 
     render() {
-        
 
-        const { userQuestions} = this.props
+
+        const { userQuestions } = this.props
 
         console.log(this.props)
         return (
-            
-            <Container style={{padding: '30px'}}>
-                
-                <Tab panes={panes({userQuestions})} className='tab' />
-                
+
+            <Container style={{ padding: '30px' }}>
+
+                <Tab panes={panes({ userQuestions })} className='tab' />
+
                 {/* <ul className='qIdsList'>
                     {this.props.questionsIds.map((id) => (
                         <li key={id}>
@@ -43,70 +43,70 @@ class Dashboard extends Component {
 }
 
 const panes = props => {
-    const {userQuestions} = props
+    const { userQuestions } = props
 
     return [
-            {
-                menuItem: 'Unanswered Questions',
-                render: () => (
-                    <Tab.Pane style={{backgroundColor: '#b54800'}}>
-                        {userQuestions.unanswered.map(q => (
-                            <QuestionCard 
-                                key={q.id}
-                                q_id={q.id}
-                                // color={color.blue.hex}
-                                unanswered = {false}
+        {
+            menuItem: 'Unanswered Questions',
+            render: () => (
+                <Tab.Pane style={{ backgroundColor: '#b54800' }}>
+                    {userQuestions.unanswered.map(q => (
+                        <QuestionCard
+                            key={q.id}
+                            q_id={q.id}
+                            // color={color.blue.hex}
+                            unanswered={false}
 
-                            >
-                                {/* <CardContent 
+                        >
+                            {/* <CardContent 
                                     question={q}
                                     unanswered={false}
                                     color = {color.blue.name}
                                 /> */}
-                                
 
-                            </QuestionCard>
-                        ))}
-                    </Tab.Pane>
-                )
-            },
 
-            {
-                menuItem: 'Answered Questions',
-                render: () => (
-                    <Tab.Pane  style={{backgroundColor: '#007f7f'}}>
-                        {userQuestions.answered.map(q => (
-                            <QuestionCard 
-                                key={q.id}
-                                q_id={q.id}
-                                unanswered = {true}
-                                // color={color.green.hex}
-                            >
-                                {/* <CardContent 
+                        </QuestionCard>
+                    ))}
+                </Tab.Pane>
+            )
+        },
+
+        {
+            menuItem: 'Answered Questions',
+            render: () => (
+                <Tab.Pane style={{ backgroundColor: '#007f7f' }}>
+                    {userQuestions.answered.map(q => (
+                        <QuestionCard
+                            key={q.id}
+                            q_id={q.id}
+                            unanswered={true}
+                        // color={color.green.hex}
+                        >
+                            {/* <CardContent 
                                     question={q}
                                     unanswered={true}
                                     color = {color.green.name}
                                 /> */}
-                            </QuestionCard>
-                        ))}
-                    </Tab.Pane>
-                )
-            },
+                        </QuestionCard>
+                    ))}
+                </Tab.Pane>
+            )
+        },
     ]
 }
-function mapStateToProps({authedUser, users, questions}) {
+function mapStateToProps({ authedUser, users, questions }) {
     const answeredIds = Object.keys(users[authedUser].answers)
     const answered = Object.values(questions)
         .filter(q => answeredIds.includes(q.id))
         .sort((x, y) => y.timestamp - x.timestamp)
-    
+
     const unanswered = Object.values(questions)
         .filter(q => !answeredIds.includes(q.id))
         .sort((x, y) => y.timestamp - x.timestamp)
     return {
 
         userQuestions: {
-            answered, 
+            answered,
             unanswered
         }
         // questionsIds: Object.keys(questions)
