@@ -1,7 +1,8 @@
 # README Would You Rather.. ?
 
 A template of README best practices to make your README simple to understand and easy to use. 
-
+## Demo
+here is a link for a live version: https://ratherapp.netlify.app/
 ## Table of Contents
 
 - [Installation](#installation)
